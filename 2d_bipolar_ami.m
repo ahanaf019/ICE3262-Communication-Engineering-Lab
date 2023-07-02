@@ -54,7 +54,7 @@ for i=1:length(t)
     demod(index) = 1;
   endif
   
-  if t(i)*bitrate >= index && index < length(x)
+  if t(i)*bitrate >= index
     index += 1;  
   endif
 
