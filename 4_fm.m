@@ -5,18 +5,19 @@ close all;
 
 ## Message Signal
 fm = 4;
-a = 5;
+am = 5;
 t = 0 : 0.0001 : 1;
 
-xm = sin(2*pi*fm*t);
+xm = am * cos(2*pi*fm*t);
 
 subplot(3,1,1)
-plot(t, a * xm)
+plot(t, xm)
 title('Message Signal')
 
 ## Carrier Signal
+ac = 5;
 fc = 100;
-xc = sin(2*pi*fc*t);
+xc = ac * cos(2*pi*fc*t);
 
 subplot(3,1,2)
 plot(t, xc)
@@ -24,14 +25,17 @@ title('Carrier Signal')
 
 
 ## Modulation
-k = abs(fm - fc) / fm;
 k = 10;
+beta = k * am / fm;
 
-mod = a * sin(2*pi*fc*t .+ k*xm);
+mod = ac * cos(2*pi*fc*t .+ k* sin(2*pi*fm*t));
 
 subplot(3,1,3)
 plot(t, mod)
 title('FM Modulated Signal')
+
+
+
 
 
 ##  The equation for frequency modulation (FM) can be expressed as:

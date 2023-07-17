@@ -23,8 +23,9 @@ title('Message Signal')
 
 ## Modulation
 k = am/ac;
-mod = ac*(1 + k*xm) .* xc;
+mod = (ac + am*xm) .* xc;
 
 subplot(3,1,3)
 plot(t, mod)
 title('AM Modulated Signal')
+
